@@ -1,0 +1,742 @@
+/* --- Configuración Global y Variables --- */
+:root {
+    --primary-color: #FDD100; /* Amarillo del logo */
+    --secondary-color: #2F6335; /* Verde Oscuro del logo */
+    --accent-color: #E67E22; /* Naranja para botones de formulario (se mantiene, es un buen contraste) */
+    --dark-color: #333; /* Un gris oscuro para texto general */
+    --light-color: #f8f8f8; /* Un blanco roto para secciones claras */
+    --white-color: #ffffff; /* Blanco puro para texto sobre fondos oscuros */
+    --font-title: 'Lobster', cursive;
+    --font-body: 'Oswald', sans-serif;
+}
+
+/* Propiedad para desplazamiento suave */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Evita que el header tape el título de la sección */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    background: var(--white-color); /* Fondo principal blanco */
+    color: var(--dark-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+h2 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-color); /* Títulos en verde oscuro */
+    text-align: center;
+}
+
+h3 {
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.page-section {
+    padding: 5rem 0;
+}
+
+.bg-light {
+    background: var(--light-color); /* Sección clara con blanco roto */
+}
+
+/* --- Encabezado y Navegación --- */
+.header {
+    background: var(--secondary-color); /* Fondo verde oscuro del logo */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra más notoria */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid var(--primary-color); /* Borde inferior amarillo */
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between; /* Mantiene el logo a la izquierda y menú a la derecha/centro */
+    align-items: center;
+    height: 80px;
+}
+
+.logo img {
+    height: 55px; /* Ligeramente más pequeño para mejor ajuste */
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    /* Centrado de los enlaces */
+    flex-grow: 1; /* Permite que el contenedor de los enlaces crezca */
+    justify-content: center; /* Centra los enlaces horizontalmente */
+}
+
+.nav-menu li {
+    padding: 0 1.5rem; /* Más espacio entre cada enlace */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--white-color); /* Texto de los enlaces en blanco */
+    font-weight: 700;
+    font-size: 1.2rem; /* Texto ligeramente más grande */
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Efecto de subrayado al pasar el mouse */
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color); /* Subrayado amarillo */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color); /* Color del texto cambia a amarillo */
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* --- Sección Hero (Principal) --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center center/cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white-color); /* Texto del hero en blanco */
+    padding: 0 1rem;
+}
+
+.hero-content h1 {
+    font-family: var(--font-title);
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    color: var(--primary-color); /* Título del hero en amarillo */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color); /* Botón en amarillo */
+    color: var(--dark-color);
+    padding: 0.8rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffd000; /* Un amarillo ligeramente más claro al pasar el ratón */
+    transform: scale(1.05);
+}
+
+/* --- Sección Quiénes Somos --- */
+.content-section {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.text-content {
+    flex: 1;
+    text-align: left;
+}
+
+.text-content h2 {
+    text-align: left;
+}
+
+.image-content {
+    flex: 1;
+}
+
+.image-content img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Sección de Menú --- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.menu-item {
+    background: var(--white-color); /* Fondo blanco para items del menú */
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-item h3 {
+    font-size: 1.6rem;
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 700;
+    color: var(--dark-color); /* Títulos de menú en gris oscuro */
+}
+
+.menu-item p {
+    padding: 0 1.5rem;
+    font-size: 1rem;
+}
+
+.menu-item .price {
+    display: block;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color); /* Precio en amarillo */
+}
+
+
+/* === ESTILOS SECCIÓN PROMOCIONES === */
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.promo-item {
+    background: var(--white-color);
+    border: 1px solid var(--light-color); /* Borde suave en blanco roto */
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.promo-item img {
+    width: 100%;
+    /* --- CAMBIO AQUÍ PARA HACERLAS MÁS VERTICALES --- */
+    height: 350px; /* Incrementa la altura para una proporción más vertical */
+    object-fit: cover;
+    /* ----------------------------------------------- */
+}
+
+.promo-item h3 {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+    color: var(--secondary-color); /* Títulos de promociones en verde oscuro */
+}
+
+.promo-item p {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    font-size: 1rem;
+    min-height: 80px; /* Esto puede necesitar ajuste si las nuevas descripciones son muy cortas o largas */
+}
+
+
+/* === NUEVOS ESTILOS: SECCIÓN HORARIOS === */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas responsivas */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 800px; /* Ancho máximo para el grid de horarios */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.horario-item {
+    background: var(--white-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+    border: 2px solid var(--secondary-color); /* Borde verde oscuro */
+}
+
+.horario-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color); /* Nombre del día en verde oscuro */
+}
+
+.horario-item p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.horario-item.closed {
+    background: #fdf2f2; /* Fondo ligeramente rojizo para "Cerrado" */
+    border-color: #e74c3c; /* Borde rojo para "Cerrado" */
+}
+
+.horario-item.closed h4,
+.horario-item.closed p {
+    color: #c0392b; /* Texto en rojo para "Cerrado" */
+}
+
+.horarios-nota {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--dark-color);
+}
+
+
+/* === ESTILOS SECCIÓN UBICACIÓN Y CONTACTO === */
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.contact-form h3 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.contact-form p {
+    margin-bottom: 2rem;
+}
+
+.contact-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+}
+
+.btn-form {
+    grid-column: 1 / -1;
+    background: #106938; /* Botón del formulario en naranja */
+    color: var(--white-color);
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-form:hover {
+    background: #0C4D29; /* Naranja más oscuro al pasar el ratón */
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    border-radius: 10px;
+}
+
+
+/* === NUEVOS ESTILOS: SECCIÓN REELS === */
+.reels-grid {
+    display: grid;
+    justify-content: center; /* AÑADIDO: Esto centrará el contenido del grid horizontalmente */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 350px)); /* MODIFICADO: Se ajusta el tamaño máximo para que no se estire */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.reel-item {
+    background: var(--white-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reel-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.reel-item video {
+    width: 100%;
+    height: auto;
+    display: block; /* Para eliminar cualquier espacio extra debajo del video */
+}
+
+
+/* --- ESTILOS MEJORADOS PARA EL FOOTER --- */
+.footer {
+    background: var(--secondary-color); /* Fondo verde oscuro del logo */
+    color: var(--white-color);
+    padding: 4rem 0 2rem 0; /* Más padding arriba y abajo */
+    font-family: var(--font-body);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columnas en escritorio, adaptable */
+    gap: 2rem;
+    align-items: start; /* Alinea los elementos en la parte superior */
+    margin-bottom: 3rem;
+}
+
+.footer-grid h4 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color); /* Títulos de sección del footer en amarillo */
+}
+
+.footer-grid p, .footer-grid a, .footer-grid ul li {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Sección de Información Principal */
+.footer-about p {
+    max-width: 350px; /* Limita el ancho del texto para mejor legibilidad */
+}
+
+/* Sección de Enlaces de Navegación */
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li a {
+    color: var(--white-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color); /* Amarillo al pasar el mouse */
+}
+
+/* Sección de Contacto */
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.footer-contact p i {
+    color: var(--primary-color); /* Iconos de contacto en amarillo */
+    margin-right: 10px;
+    font-size: 1.1rem;
+    width: 20px; /* Asegura un ancho uniforme para los iconos */
+}
+
+.footer-contact a {
+    color: var(--white-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-color);
+}
+
+/* Sección de Redes Sociales */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Contenedores circulares */
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #093D21; /* Fondo blanco al pasar el mouse */
+}
+
+.social-icons a img {
+    width: 60%; /* Ajusta el tamaño de la imagen dentro del círculo */
+    height: 60%;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.2)); /* Sombra sutil para darle profundidad */
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1); /* Ligeramente más grande al pasar el mouse */
+}
+
+/* El media query para el footer social también debe ajustarse si es necesario, 
+   pero con estos cambios de tamaño la mayoría de las veces se verá bien. */
+@media (max-width: 992px) {
+    /* ... otros estilos ... */
+    .social-icons {
+        justify-content: center; /* Centra los iconos sociales en pantallas pequeñas */
+    }
+}
+
+/* Parte Inferior del Footer (Copyright) */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria sutil */
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7); /* Texto de copyright más suave */
+}
+
+.footer-bottom p:last-child {
+    margin-top: 0.5rem; /* Espacio entre las líneas de copyright */
+}
+
+
+/* --- Mejoras de responsividad para móviles e iPad --- */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+    .header {
+        padding: 0 0.5rem;
+    }
+    .nav {
+        height: 50px;
+    }
+    .logo img {
+        height: 35px;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .page-section {
+        padding: 1.5rem 0;
+    }
+    .content-section {
+        gap: 1rem;
+    }
+    .image-content img {
+        border-radius: 6px;
+    }
+    .menu-grid,
+    .promo-grid,
+    .horarios-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .menu-item img,
+    .promo-item img {
+        height: 150px;
+    }
+    .promo-item img {
+        height: 180px;
+    }
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .contact-form h3 {
+        font-size: 1.2rem;
+    }
+    .contact-form form {
+        gap: 0.5rem;
+    }
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95rem;
+        padding: 0.5rem;
+    }
+    .btn,
+    .btn-form {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+    }
+    .footer {
+        padding: 2rem 0 1rem 0;
+    }
+    .footer-grid {
+        gap: 1rem;
+    }
+    .footer-grid h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+    .footer-grid p, .footer-grid a, .footer-grid ul li {
+        font-size: 0.95rem;
+    }
+    .social-icons a {
+        width: 32px;
+        height: 32px;
+    }
+    .social-icons a img {
+        width: 60%;
+        height: 60%;
+    }
+    .footer-bottom {
+        font-size: 0.8rem;
+        padding-top: 1rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Mejoras para iPad vertical/horizontal */
+@media (max-width: 900px) and (min-width: 601px) {
+    .container {
+        padding: 0 1rem;
+    }
+    .nav {
+        height: 60px;
+    }
+    .logo img {
+        height: 40px;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    .page-section {
+        padding: 2rem 0;
+    }
+    .content-section {
+        gap: 1.5rem;
+    }
+    .menu-grid,
+    .promo-grid,
+    .horarios-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+    }
+    .menu-item img,
+    .promo-item img {
+        height: 160px;
+    }
+    .promo-item img {
+        height: 200px;
+    }
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .footer {
+        padding: 2.5rem 0 1.5rem 0;
+    }
+    .footer-grid {
+        gap: 1.2rem;
+    }
+    .footer-grid h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .footer-grid p, .footer-grid a, .footer-grid ul li {
+        font-size: 1rem;
+    }
+    .social-icons a {
+        width: 36px;
+        height: 36px;
+    }
+    .footer-bottom {
+        font-size: 0.9rem;
+        padding-top: 1.2rem;
+        margin-top: 1.2rem;
+    }
+}
+
+/* Ajuste para evitar desbordes horizontales */
+body, html {
+    overflow-x: hidden;
+}
